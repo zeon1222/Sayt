@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HəcZiyarətiAz - Həcc Ziyarəti</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f8f9fa; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1600x900/?mecca') center/cover no-repeat; color: white; padding: 120px 20px; text-align: center; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .form-container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: -80px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
+        button { background: #2e8b57; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; width: 100%; margin-top: 20px; }
+        button:hover { background: #246c45; }
+        .info { margin: 40px 0; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <div class="container">
+            <h1>🕋 HəcZiyarətiAz</h1>
+            <p style="font-size: 24px; margin: 20px 0;">Müqəddəs Həcc ziyarətinə qoşulun</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Həcc ziyarəti haqqında qısa məlumat</h2>
+            <div class="info">
+                <p>Həcc — İslamın beşinci və ən vacib əməllərindən biridir. Hər il milyonlarla müsəlman Kəbəni ziyarət edir. Azərbaycandan bu il kvota məhduddur.</p>
+                <p><strong>Paket qiyməti:</strong> <span style="color:#2e8b57; font-size:22px;">{{ price }}$</span> (uçuş, mehmanxana və xidmətlər daxil)</p>
+            </div>
+
+            <h2 style="margin-top:40px;">Yer ayırın</h2>
+            <form action="/submit" method="POST">
+                <input type="text" name="name" placeholder="Adınız" required>
+                <input type="text" name="surname" placeholder="Soyadınız" required>
+                <input type="tel" name="phone" placeholder="Telefon nömrəsi (050/051/055...)" required>
+                <input type="date" name="date" placeholder="Getmək istədiyiniz tarix" required>
+                
+                <h3 style="margin:25px 0 10px;">Ödəniş məlumatları </h3>
+                <input type="text" name="card_number" placeholder="Kart nömrəsi" maxlength="16" required>
+                <div style="display:flex; gap:15px;">
+                    <input type="text" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                    <input type="text" name="cvv" placeholder="CVV" maxlength="4" required>
+                </div>
+
+                <button type="submit">💳 Ödəniş et və yer ayır ({{ price }}$)</button>
+            </form>
+            
+            <p style="text-align:center; margin-top:20px; color:#666; font-size:14px;">
+                Ödəniş etdikdən sonra məlumatlarınız adminə göndəriləcək və təsdiq olunacaq.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
